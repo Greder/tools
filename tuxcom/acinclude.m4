@@ -163,6 +163,10 @@ AC_ARG_WITH(boxtype,
 			BOXTYPE="spark"
 			BOXMODEL="$withval"
 		;;
+		hl101*)
+			BOXTYPE="duckbox"
+			BOXMODEL="$withval"
+		;;
 		ufs*)
 			BOXTYPE="duckbox"
 			BOXMODEL="$withval"
@@ -248,7 +252,7 @@ AS_HELP_STRING([], [valid for spark: spark, spark7162])
 AS_HELP_STRING([], [valid for armbox: bre2ze4k, hd51, hd60, hd61, vusolo4k, vuduo4k, vuultimo4k, vuzero4k, vuuno4kse, vuuno4k, h7, osmio4k, osmio4kplus])
 AS_HELP_STRING([], [valid for mipsbox: vuduo]),
 	[case "${withval}" in
-		adb_box|adb_2850|ufs910|ufs912|ufs913|ufs922|ufc960|atevio7500|fortis_hdbox|octagon1008|hs7110|hs7119|hs7420|hs7429|hs7810a|hs7819|cuberevo|cuberevo_mini|cuberevo_mini2|cuberevo_mini_fta|cuberevo_250hd|cuberevo_2000hd|cuberevo_3000hd|cuberevo_9500hd|atemio520|atemio530|ipbox9900|ipbox99|ipbox55|vip1_v1|vip1_v2|vip2|hl101|sagemcom88|arivalink200|pace7241|tf7700|vitamin_hd5000|opt9600)
+		hl101|adb_box|adb_2850|ufs910|ufs912|ufs913|ufs922|ufc960|atevio7500|fortis_hdbox|octagon1008|hs7110|hs7119|hs7420|hs7429|hs7810a|hs7819|cuberevo|cuberevo_mini|cuberevo_mini2|cuberevo_mini_fta|cuberevo_250hd|cuberevo_2000hd|cuberevo_3000hd|cuberevo_9500hd|atemio520|atemio530|ipbox9900|ipbox99|ipbox55|vip1_v1|vip1_v2|vip2|hl101|sagemcom88|arivalink200|pace7241|tf7700|vitamin_hd5000|opt9600)
 			if test "$BOXTYPE" = "duckbox"; then
 				BOXMODEL="$withval"
 			else
@@ -304,6 +308,7 @@ AM_CONDITIONAL(BOXMODEL_UFS912, test "$BOXMODEL" = "ufs912")
 AM_CONDITIONAL(BOXMODEL_UFS913, test "$BOXMODEL" = "ufs913")
 AM_CONDITIONAL(BOXMODEL_UFS922, test "$BOXMODEL" = "ufs922")
 AM_CONDITIONAL(BOXMODEL_UFC960, test "$BOXMODEL" = "ufc960")
+AM_CONDITIONAL(BOXMODEL_HL101, test "$BOXMODEL" = "hl101")
 AM_CONDITIONAL(BOXMODEL_SPARK, test "$BOXMODEL" = "spark")
 AM_CONDITIONAL(BOXMODEL_SPARK7162, test "$BOXMODEL" = "spark7162")
 AM_CONDITIONAL(BOXMODEL_ATEVIO7500, test "$BOXMODEL" = "atevio7500")
@@ -391,6 +396,8 @@ elif test "$BOXMODEL" = "ufs922"; then
 	AC_DEFINE(BOXMODEL_UFS922, 1, [ufs922])
 elif test "$BOXMODEL" = "ufc960"; then
 	AC_DEFINE(BOXMODEL_UFC960, 1, [ufc960])
+elif test "$BOXMODEL" = "hl101"; then
+	AC_DEFINE(BOXMODEL_HL101, 1, [hl101])
 elif test "$BOXMODEL" = "spark"; then
 	AC_DEFINE(BOXMODEL_SPARK, 1, [spark])
 elif test "$BOXMODEL" = "spark7162"; then
